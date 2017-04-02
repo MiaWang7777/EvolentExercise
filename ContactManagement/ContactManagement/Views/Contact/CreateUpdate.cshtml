@@ -1,0 +1,60 @@
+﻿@model ContactManagement.Models.ContactViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (ViewBag.Action == "Create")
+    {
+        ViewBag.Title = "Create New Contact";
+    }
+    if (ViewBag.Action == "Edit")
+    {
+        ViewBag.Title = "Edit Contact";
+    }
+    
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        RegisterInputFormatting();
+    });    
+</script>
+<br />
+<div>
+    @if (ViewBag.Action == "Create")
+    {
+        <h3>Create new contact</h3>
+    }
+    @if (ViewBag.Action == "Edit")
+    {
+        <h3>Edit contact</h3>
+    }
+</div>
+<br/>
+<div>
+    <div id="alertBox" class="row-fluid"></div>
+    
+    <form id="form-createUpdate" method="post">
+        @Html.HiddenFor(x => x.Id)
+        @Html.HiddenFor(x => x.Status)
+        <div class="form-group">
+            <label for="txt-firstname">First Name</label>
+            @Html.TextBox("firstName", Model.FirstName, new { @class = "form-control valid-name", maxLength = "50", id = "txt-firstname" })
+        </div>
+        <div class="form-group">
+            <label for="txt-lastname">Last Name</label>
+            @Html.TextBox("lastName", Model.LastName, new { @class = "form-control valid-name", maxLength = "50", id = "txt-lastname" })
+        </div>
+        <div class="form-group">
+            <label for="txt-email">Email Address</label>
+            @Html.TextBox("email", Model.Email, new { @class = "form-control email", maxLength = "200", id = "txt-email" })
+        </div>
+        <div class="form-group">
+            <label for="txt-phone">Phone Number</label>
+            @Html.TextBox("phone", Model.Phone, new { @class = "form-control phone", maxLength = "12", id = "txt-phone" })
+        </div>
+        <div class="form-group">
+            <a id="btn-cancel" href="@Url.Action("Index","Contact")" class="btn btn-default">Cancel</a>
+            <button id="btn-save" type="submit" class="btn btn-default">Save</button>
+        </div>
+    </form>
+</div>
