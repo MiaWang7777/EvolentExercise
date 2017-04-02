@@ -32,6 +32,8 @@ Required Contact model:
 - Status (Possible values: Active/Inactive)
 
 ## Getting Started
+### IDE: Visual Studio 2013
+### .config Setup
 You need to change connection string in .config files to connect to your database
 1. Change the connection string in ~\ContactManagement\Data\App.config
 2. Change connection string in ~\ContactManagement\ContactManagement\Web.config
